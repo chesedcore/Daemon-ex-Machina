@@ -1,0 +1,529 @@
+[gd_scene load_steps=8 format=3 uid="uid://wp4vcjwq4bt0"]
+
+[ext_resource type="Script" uid="uid://dxp8eyc40xw1d" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Script" uid="uid://dw42inhbwtavm" path="res://scripts/ui/Cascade.gd" id="1_l6cm7"]
+[ext_resource type="Shader" uid="uid://b5pgfrbydhrwy" path="res://shadercode/fucking_skew.gdshader" id="2_ekxnf"]
+[ext_resource type="Shader" uid="uid://dk6sf2o0dbx35" path="res://shadercode/stripes.gdshader" id="2_wu84c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln24"]
+resource_local_to_scene = true
+shader = ExtResource("2_wu84c")
+shader_parameter/color_gap = Color(0, 0, 0, 1)
+shader_parameter/color_stripe = Color(0.69919544, 2.0816549e-06, 6.738305e-07, 1)
+shader_parameter/divisions = 10.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.04
+shader_parameter/angle = 0.785
+shader_parameter/skew = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqqt6"]
+shader = ExtResource("2_ekxnf")
+shader_parameter/skew_factor = -1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font_size = 60
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("cascade")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+cascade = NodePath("Cascade")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8ln24")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Cascade" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+cascade_type = 2
+begin_on_ready = true
+tween_in_time = 0.7
+stagger_time = 0.02
+metadata/_edit_lock_ = true
+
+[node name="RandomShit11" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 152.45581
+offset_top = 156.7476
+offset_right = 303.797
+offset_bottom = 305.7168
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit21" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 217.05612
+offset_top = 600.3059
+offset_right = 293.863
+offset_bottom = 675.19293
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit22" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 203.96698
+offset_top = 603.5853
+offset_right = 261.4509
+offset_bottom = 659.6324
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit23" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 192.69147
+offset_top = 606.41034
+offset_right = 233.52983
+offset_bottom = 646.2279
+rotation = 2.1233575
+
+[node name="RandomShit24" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 182.05612
+offset_top = 564.3059
+offset_right = 258.863
+offset_bottom = 639.19293
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit25" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 168.96698
+offset_top = 567.5853
+offset_right = 226.4509
+offset_bottom = 623.6324
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit26" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 157.69147
+offset_top = 570.41034
+offset_right = 198.52983
+offset_bottom = 610.2279
+rotation = 2.1233575
+
+[node name="RandomShit33" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 132.05612
+offset_top = 574.3059
+offset_right = 208.863
+offset_bottom = 649.19293
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit34" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 118.96697
+offset_top = 577.5853
+offset_right = 176.4509
+offset_bottom = 633.6324
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit35" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 107.69146
+offset_top = 580.4103
+offset_right = 148.52982
+offset_bottom = 620.22784
+rotation = 2.1233575
+
+[node name="RandomShit27" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 182.05612
+offset_top = 564.3059
+offset_right = 258.863
+offset_bottom = 639.19293
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit28" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 168.96698
+offset_top = 567.5853
+offset_right = 226.4509
+offset_bottom = 623.6324
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit29" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 157.69147
+offset_top = 570.41034
+offset_right = 198.52983
+offset_bottom = 610.2279
+rotation = 2.1233575
+
+[node name="RandomShit30" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 197.05612
+offset_top = 512.3059
+offset_right = 273.863
+offset_bottom = 587.19293
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit31" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 183.96698
+offset_top = 515.5853
+offset_right = 241.4509
+offset_bottom = 571.6324
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit32" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 172.69147
+offset_top = 518.4103
+offset_right = 213.52983
+offset_bottom = 558.22784
+rotation = 2.1233575
+
+[node name="RandomShit45" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 173.05609
+offset_top = 385.30588
+offset_right = 249.86298
+offset_bottom = 460.19287
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit46" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 159.96695
+offset_top = 388.5853
+offset_right = 217.45087
+offset_bottom = 444.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit47" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 148.69144
+offset_top = 391.41025
+offset_right = 189.52979
+offset_bottom = 431.2278
+rotation = 2.1233575
+
+[node name="RandomShit42" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 145.05612
+offset_top = 447.30588
+offset_right = 221.863
+offset_bottom = 522.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit43" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 131.96698
+offset_top = 450.5853
+offset_right = 189.4509
+offset_bottom = 506.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit44" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 120.69146
+offset_top = 453.41025
+offset_right = 161.52982
+offset_bottom = 493.2278
+rotation = 2.1233575
+
+[node name="RandomShit15" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 182.05612
+offset_top = 302.30588
+offset_right = 258.863
+offset_bottom = 377.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit16" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 168.96698
+offset_top = 305.5853
+offset_right = 226.4509
+offset_bottom = 361.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit17" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 157.69147
+offset_top = 308.41034
+offset_right = 198.52983
+offset_bottom = 348.2279
+rotation = 2.1233575
+
+[node name="RandomShit18" type="ColorRect" parent="Cascade"]
+modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
+layout_mode = 0
+offset_left = 133.82344
+offset_top = 256.28802
+offset_right = 210.63033
+offset_bottom = 331.17505
+rotation = 2.154763
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit19" type="ColorRect" parent="Cascade"]
+modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
+layout_mode = 0
+offset_left = 120.7343
+offset_top = 259.56744
+offset_right = 178.21822
+offset_bottom = 315.6145
+rotation = 2.154763
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit20" type="ColorRect" parent="Cascade"]
+modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
+layout_mode = 0
+offset_left = 109.458786
+offset_top = 262.39246
+offset_right = 150.29716
+offset_bottom = 302.21002
+rotation = 2.154763
+
+[node name="RandomShit8" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 137.99998
+offset_top = 160.0
+offset_right = 268.6296
+offset_bottom = 287.77423
+rotation = 2.1233575
+color = Color(0.9882353, 0, 0, 1)
+
+[node name="RandomShit7" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = -82.14131
+offset_top = 63.0
+offset_right = 677.97974
+offset_bottom = 72.282646
+rotation = 1.0095654
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit6" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = -78.99999
+offset_top = 73.0
+offset_right = 667.43115
+offset_bottom = 77.015854
+rotation = 1.0095654
+color = Color(1, 0, 0, 1)
+
+[node name="RandomShit9" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 120.999985
+offset_top = 164.0
+offset_right = 226.97461
+offset_bottom = 267.03296
+rotation = 2.1233575
+
+[node name="RandomShit10" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 104.99997
+offset_top = 169.0
+offset_right = 185.66695
+offset_bottom = 250.04376
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit5" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = -58.958614
+offset_top = 187.93752
+offset_right = 930.11426
+offset_bottom = 221.33708
+rotation = -0.23053788
+color = Color(1, 0, 0, 1)
+
+[node name="RandomShit" type="ColorRect" parent="Cascade"]
+z_index = 2
+layout_mode = 0
+offset_left = -54.0
+offset_top = 190.00002
+offset_right = 926.3606
+offset_bottom = 217.1176
+rotation = -0.23053788
+color = Color(0, 0, 0, 1)
+
+[node name="RandomRhombus" type="ColorRect" parent="Cascade/RandomShit"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 701.21655
+offset_top = -0.16217041
+offset_right = 715.6569
+offset_bottom = 27.13942
+rotation = 0.0055080503
+
+[node name="RandomRhombus2" type="ColorRect" parent="Cascade/RandomShit"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 769.4003
+offset_top = -0.1962986
+offset_right = 783.8407
+offset_bottom = 27.105307
+rotation = 0.0055080503
+
+[node name="RandomRhombus3" type="ColorRect" parent="Cascade/RandomShit"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 735.4454
+offset_top = 0.05151081
+offset_right = 749.88574
+offset_bottom = 27.298183
+rotation = 0.0055080503
+
+[node name="RandomRhombus4" type="ColorRect" parent="Cascade/RandomShit"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 116.17828
+offset_top = -0.15448755
+offset_right = 130.61865
+offset_bottom = 27.40281
+rotation = 0.0055080503
+
+[node name="RandomRhombus5" type="ColorRect" parent="Cascade/RandomShit"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 76.904205
+offset_top = -0.1049881
+offset_right = 91.344574
+offset_bottom = 27.212776
+rotation = 0.0055080503
+
+[node name="RandomShit4" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = -6.418957
+offset_top = -106.00775
+offset_right = 867.995
+offset_bottom = -82.751114
+rotation = 1.3399616
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit3" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = -11.082352
+offset_top = -99.9853
+offset_right = 853.74005
+offset_bottom = -88.56382
+rotation = 1.3399616
+color = Color(0.9882353, 0, 0, 1)
+
+[node name="RandomShit36" type="ColorRect" parent="Cascade"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 186.05612
+offset_top = 125.30588
+offset_right = 262.863
+offset_bottom = 200.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit37" type="ColorRect" parent="Cascade"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 172.96698
+offset_top = 128.5853
+offset_right = 230.4509
+offset_bottom = 184.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit38" type="ColorRect" parent="Cascade"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 161.69147
+offset_top = 131.41034
+offset_right = 202.52983
+offset_bottom = 171.2279
+rotation = 2.1233575
+
+[node name="RandomShit39" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 236.05612
+offset_top = 130.30588
+offset_right = 312.863
+offset_bottom = 205.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit40" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 222.96698
+offset_top = 133.5853
+offset_right = 280.4509
+offset_bottom = 189.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit41" type="ColorRect" parent="Cascade"]
+layout_mode = 0
+offset_left = 211.69147
+offset_top = 136.41034
+offset_right = 252.52983
+offset_bottom = 176.2279
+rotation = 2.1233575
+
+[node name="RandomShit12" type="ColorRect" parent="Cascade"]
+z_index = 3
+layout_mode = 0
+offset_left = 100.056114
+offset_top = 168.30588
+offset_right = 176.863
+offset_bottom = 243.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit13" type="ColorRect" parent="Cascade"]
+z_index = 3
+layout_mode = 0
+offset_left = 86.96697
+offset_top = 171.5853
+offset_right = 144.4509
+offset_bottom = 227.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit14" type="ColorRect" parent="Cascade"]
+z_index = 3
+layout_mode = 0
+offset_left = 75.691475
+offset_top = 174.41034
+offset_right = 116.52984
+offset_bottom = 214.2279
+rotation = 2.1233575
+
+[node name="Title" type="Label" parent="Cascade"]
+layout_mode = 0
+offset_left = 63.000004
+offset_top = 183.00002
+offset_right = 795.0
+offset_bottom = 256.0
+rotation = -0.23317082
+theme_override_font_sizes/font_size = 60
+text = "Daemon ex Machina"
+label_settings = SubResource("LabelSettings_wu84c")
+metadata/_edit_lock_ = true
