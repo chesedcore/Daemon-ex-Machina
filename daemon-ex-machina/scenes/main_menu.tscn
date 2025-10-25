@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wp4vcjwq4bt0"]
+[gd_scene load_steps=15 format=3 uid="uid://wp4vcjwq4bt0"]
 
 [ext_resource type="Script" uid="uid://dxp8eyc40xw1d" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://dw42inhbwtavm" path="res://scripts/ui/Cascade.gd" id="1_l6cm7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dijt8tw6hyo7b" path="res://scripts/menu_buttons.gd" id="3_8ln24"]
 [ext_resource type="Script" uid="uid://dx06tggmku35n" path="res://scripts/ui/centering_rect.gd" id="6_rtw2f"]
 [ext_resource type="Script" uid="uid://dyq2ogu48adsk" path="res://scripts/ui/pulsing_button_handler.gd" id="6_tbmy8"]
+[ext_resource type="Script" uid="uid://cgds8bsltnxe2" path="res://scripts/ui/the_fucking_rich_text_label_button.gd" id="7_tbmy8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln24"]
 resource_local_to_scene = true
@@ -682,17 +683,22 @@ text = "Daemon exe Machina"
 label_settings = SubResource("LabelSettings_wu84c")
 metadata/_edit_lock_ = true
 
-[node name="Cascade2" type="Control" parent="MenuShit" node_paths=PackedStringArray("buttons", "shit_under_start", "shit_under_continue", "shit_under_options", "shit_under_credits", "exclude_these_nodes")]
+[node name="Cascade2" type="Control" parent="MenuShit" node_paths=PackedStringArray("buttons", "start_button", "continue_button", "options_button", "credits_button", "shit_under_start", "shit_under_continue", "shit_under_options", "shit_under_credits", "focused_button", "exclude_these_nodes")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_tbmy8")
 buttons = [NodePath("START GAME"), NodePath("CONTINUE"), NodePath("OPTIONS"), NodePath("CREDITS")]
+start_button = NodePath("START GAME")
+continue_button = NodePath("CONTINUE")
+options_button = NodePath("OPTIONS")
+credits_button = NodePath("CREDITS")
 focus_stagger = 0.08
 shit_under_start = [NodePath("FocusRect"), NodePath("PulsingRectOutline"), NodePath("PulsingRectLayer"), NodePath("PulsingRectLayer2"), NodePath("PulsingRectLayer3"), NodePath("Indicator")]
-shit_under_continue = [NodePath("FocusRect3"), NodePath("PulsingRectOutline3"), NodePath("PulsingRectLayer7"), NodePath("PulsingRectLayer8"), NodePath("PulsingRectLayer9"), NodePath("Indicator4")]
+shit_under_continue = [NodePath("FocusRect3"), NodePath("PulsingRectOutline3"), NodePath("PulsingRectLayer7"), NodePath("PulsingRectLayer8"), NodePath("PulsingRectLayer9"), NodePath("Indicator3")]
 shit_under_options = [NodePath("FocusRect4"), NodePath("PulsingRectOutline4"), NodePath("PulsingRectLayer10"), NodePath("PulsingRectLayer11"), NodePath("PulsingRectLayer12"), NodePath("Indicator4")]
 shit_under_credits = [NodePath("FocusRect5"), NodePath("PulsingRectOutline5"), NodePath("PulsingRectLayer13"), NodePath("PulsingRectLayer14"), NodePath("PulsingRectLayer15"), NodePath("Indicator5")]
+focused_button = NodePath("START GAME")
 exclude_these_nodes = [NodePath("FocusRect3"), NodePath("PulsingRectOutline3"), NodePath("PulsingRectLayer7"), NodePath("PulsingRectLayer9"), NodePath("PulsingRectLayer8"), NodePath("Indicator3"), NodePath("FocusRect4"), NodePath("PulsingRectOutline4"), NodePath("PulsingRectLayer10"), NodePath("PulsingRectLayer11"), NodePath("PulsingRectLayer12"), NodePath("Indicator4"), NodePath("FocusRect5"), NodePath("PulsingRectOutline5"), NodePath("PulsingRectLayer13"), NodePath("PulsingRectLayer14"), NodePath("PulsingRectLayer15"), NodePath("Indicator5")]
 cascade_type = 2
 stagger_time = 0.02
@@ -715,6 +721,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_tbmy8")
 metadata/_edit_lock_ = true
 
 [node name="FocusRect" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -804,6 +811,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_tbmy8")
 metadata/_edit_lock_ = true
 
 [node name="FocusRect3" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -899,6 +907,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_tbmy8")
 metadata/_edit_lock_ = true
 
 [node name="FocusRect4" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -995,6 +1004,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_tbmy8")
 
 [node name="FocusRect5" type="ColorRect" parent="MenuShit/Cascade2"]
 material = SubResource("ShaderMaterial_tbmy8")
