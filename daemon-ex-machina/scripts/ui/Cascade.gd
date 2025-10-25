@@ -202,6 +202,14 @@ func filter_hitzone(arr: Array[Node]) -> Array[Node]:
 		unit.scale = Vector2(0, -2)
 	return arr
 
+##hitzone leaves everything in a haphazard state. this resets them back.
+func hitzone_reset_pos_for_next_in() -> void:
+	for unit in get_children():
+		if unit is Marker2D or unit is Timer: continue
+		var original_pos := _original_positions[unit]
+		unit.position = original_pos
+
+
 ##scatter the units from hitzone into a sine-ordered manner.
 func filter_sine_hitzone(arr: Array[Node]) -> Array[Node]:
 	#arr.sort_custom(
@@ -281,24 +289,33 @@ func cascade_in() -> void:
 		CASCADE_TYPE.RANDOM:
 			_cascade_in_random()
 		CASCADE_TYPE.HITZONE:
+			hitzone_reset_pos_for_next_in()
 			_cascade_in_hitzone()
 		CASCADE_TYPE.SINE_ORDERED_HITZONE:
 			_cascade_in_sine_hitzone()
 
 ##the public API method intended to block off the entire cascade chain.
 ##the UI elements fly out of view into the ragnarok.
-func cascade_out() -> void:
+##optionally, you can add a flag to ignore excluded nodes,
+##so that every-single-fucking-thing flies out regardless of state.
+func cascade_out(ignore_exclusions: bool = false) -> void:
+	var saved_exclusions := exclude_these_nodes.duplicate()
+	if ignore_exclusions: exclude_these_nodes.clear()
+	
 	match cascade_type:
 		CASCADE_TYPE.ORDERED:
 			_cascade_out_ordered()
 		CASCADE_TYPE.HITZONE, CASCADE_TYPE.SINE_ORDERED_HITZONE:
 			_cascade_out_hitzone()
 		CASCADE_TYPE.RANDOM:
-			_cascade_in_random()
+			_cascade_out_random()
+	
+	if ignore_exclusions: exclude_these_nodes = saved_exclusions
 #endregion
 
 func _ready() -> void:
 	await get_tree().process_frame
 	prepare_positions_arr()
+	await get_tree().process_frame
 	set_start_state()
 	if begin_on_ready: cascade_in()
