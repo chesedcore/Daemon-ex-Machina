@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://wp4vcjwq4bt0"]
+[gd_scene load_steps=14 format=3 uid="uid://wp4vcjwq4bt0"]
 
 [ext_resource type="Script" uid="uid://dxp8eyc40xw1d" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://dw42inhbwtavm" path="res://scripts/ui/Cascade.gd" id="1_l6cm7"]
 [ext_resource type="Shader" uid="uid://b5pgfrbydhrwy" path="res://shadercode/fucking_skew.gdshader" id="2_ekxnf"]
 [ext_resource type="Shader" uid="uid://dk6sf2o0dbx35" path="res://shadercode/stripes.gdshader" id="2_wu84c"]
+[ext_resource type="Script" uid="uid://dijt8tw6hyo7b" path="res://scripts/menu_buttons.gd" id="3_8ln24"]
+[ext_resource type="Script" uid="uid://dx06tggmku35n" path="res://scripts/ui/centering_rect.gd" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://dyq2ogu48adsk" path="res://scripts/ui/pulsing_button_handler.gd" id="6_tbmy8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln24"]
 resource_local_to_scene = true
@@ -20,12 +23,44 @@ shader_parameter/skew = 0.0
 shader = ExtResource("2_ekxnf")
 shader_parameter/skew_factor = -1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw2f"]
+resource_local_to_scene = true
+shader = ExtResource("2_wu84c")
+shader_parameter/color_gap = Color(1, 0, 0.050980393, 1)
+shader_parameter/color_stripe = Color(1, 1, 1, 0)
+shader_parameter/divisions = 16.0
+shader_parameter/stripe_bias = 4.5
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.085
+shader_parameter/skew = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
+resource_local_to_scene = true
+shader = ExtResource("2_wu84c")
+shader_parameter/color_gap = Color(0, 0, 0, 1)
+shader_parameter/color_stripe = Color(0, 0, 0, 0)
+shader_parameter/divisions = 8.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.1
+shader_parameter/angle = 78.485
+shader_parameter/skew = 0.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
 font_size = 60
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("cascade")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbmy8"]
+shader = ExtResource("2_wu84c")
+shader_parameter/color_gap = Color(0.25, 0.25, 0.25, 0.25)
+shader_parameter/color_stripe = Color(1, 1, 1, 1)
+shader_parameter/divisions = 8.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.7854
+shader_parameter/skew = 0.0
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("cascades")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +68,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bqqt6")
-cascade = NodePath("Cascade")
+cascades = [NodePath("MenuShit/Cascade1"), NodePath("MenuShit/Cascade2")]
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -46,7 +81,19 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Cascade" type="Control" parent="."]
+[node name="MenuShit" type="Control" parent="." node_paths=PackedStringArray("cascade_one", "cascade_two")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8ln24")
+cascade_one = NodePath("Cascade1")
+cascade_two = NodePath("Cascade2")
+metadata/_edit_lock_ = true
+
+[node name="Cascade1" type="Control" parent="MenuShit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,11 +103,11 @@ grow_vertical = 2
 script = ExtResource("1_l6cm7")
 cascade_type = 2
 begin_on_ready = true
-tween_in_time = 0.7
 stagger_time = 0.02
+metadata/_custom_type_script = "uid://dw42inhbwtavm"
 metadata/_edit_lock_ = true
 
-[node name="RandomShit11" type="ColorRect" parent="Cascade"]
+[node name="RandomShit11" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 152.45581
 offset_top = 156.7476
@@ -69,7 +116,7 @@ offset_bottom = 305.7168
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit21" type="ColorRect" parent="Cascade"]
+[node name="RandomShit21" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 217.05612
 offset_top = 600.3059
@@ -78,7 +125,7 @@ offset_bottom = 675.19293
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit22" type="ColorRect" parent="Cascade"]
+[node name="RandomShit22" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 203.96698
 offset_top = 603.5853
@@ -87,7 +134,7 @@ offset_bottom = 659.6324
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit23" type="ColorRect" parent="Cascade"]
+[node name="RandomShit23" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 192.69147
 offset_top = 606.41034
@@ -95,7 +142,7 @@ offset_right = 233.52983
 offset_bottom = 646.2279
 rotation = 2.1233575
 
-[node name="RandomShit24" type="ColorRect" parent="Cascade"]
+[node name="RandomShit24" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 182.05612
 offset_top = 564.3059
@@ -104,7 +151,7 @@ offset_bottom = 639.19293
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit25" type="ColorRect" parent="Cascade"]
+[node name="RandomShit25" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 168.96698
 offset_top = 567.5853
@@ -113,7 +160,7 @@ offset_bottom = 623.6324
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit26" type="ColorRect" parent="Cascade"]
+[node name="RandomShit26" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 157.69147
 offset_top = 570.41034
@@ -121,7 +168,7 @@ offset_right = 198.52983
 offset_bottom = 610.2279
 rotation = 2.1233575
 
-[node name="RandomShit33" type="ColorRect" parent="Cascade"]
+[node name="RandomShit33" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 132.05612
 offset_top = 574.3059
@@ -130,7 +177,7 @@ offset_bottom = 649.19293
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit34" type="ColorRect" parent="Cascade"]
+[node name="RandomShit34" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 118.96697
 offset_top = 577.5853
@@ -139,7 +186,7 @@ offset_bottom = 633.6324
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit35" type="ColorRect" parent="Cascade"]
+[node name="RandomShit35" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 107.69146
 offset_top = 580.4103
@@ -147,7 +194,7 @@ offset_right = 148.52982
 offset_bottom = 620.22784
 rotation = 2.1233575
 
-[node name="RandomShit27" type="ColorRect" parent="Cascade"]
+[node name="RandomShit27" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 182.05612
 offset_top = 564.3059
@@ -156,7 +203,7 @@ offset_bottom = 639.19293
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit28" type="ColorRect" parent="Cascade"]
+[node name="RandomShit28" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 168.96698
 offset_top = 567.5853
@@ -165,7 +212,7 @@ offset_bottom = 623.6324
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit29" type="ColorRect" parent="Cascade"]
+[node name="RandomShit29" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 157.69147
 offset_top = 570.41034
@@ -173,7 +220,7 @@ offset_right = 198.52983
 offset_bottom = 610.2279
 rotation = 2.1233575
 
-[node name="RandomShit30" type="ColorRect" parent="Cascade"]
+[node name="RandomShit30" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 197.05612
 offset_top = 512.3059
@@ -182,7 +229,7 @@ offset_bottom = 587.19293
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit31" type="ColorRect" parent="Cascade"]
+[node name="RandomShit31" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 183.96698
 offset_top = 515.5853
@@ -191,7 +238,7 @@ offset_bottom = 571.6324
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit32" type="ColorRect" parent="Cascade"]
+[node name="RandomShit32" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 172.69147
 offset_top = 518.4103
@@ -199,7 +246,7 @@ offset_right = 213.52983
 offset_bottom = 558.22784
 rotation = 2.1233575
 
-[node name="RandomShit45" type="ColorRect" parent="Cascade"]
+[node name="RandomShit45" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 173.05609
 offset_top = 385.30588
@@ -208,7 +255,7 @@ offset_bottom = 460.19287
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit46" type="ColorRect" parent="Cascade"]
+[node name="RandomShit46" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 159.96695
 offset_top = 388.5853
@@ -217,7 +264,7 @@ offset_bottom = 444.63235
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit47" type="ColorRect" parent="Cascade"]
+[node name="RandomShit47" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 148.69144
 offset_top = 391.41025
@@ -225,7 +272,7 @@ offset_right = 189.52979
 offset_bottom = 431.2278
 rotation = 2.1233575
 
-[node name="RandomShit42" type="ColorRect" parent="Cascade"]
+[node name="RandomShit42" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 145.05612
 offset_top = 447.30588
@@ -234,7 +281,7 @@ offset_bottom = 522.1929
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit43" type="ColorRect" parent="Cascade"]
+[node name="RandomShit43" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 131.96698
 offset_top = 450.5853
@@ -243,7 +290,7 @@ offset_bottom = 506.63235
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit44" type="ColorRect" parent="Cascade"]
+[node name="RandomShit44" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 120.69146
 offset_top = 453.41025
@@ -251,7 +298,7 @@ offset_right = 161.52982
 offset_bottom = 493.2278
 rotation = 2.1233575
 
-[node name="RandomShit15" type="ColorRect" parent="Cascade"]
+[node name="RandomShit15" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 182.05612
 offset_top = 302.30588
@@ -260,7 +307,7 @@ offset_bottom = 377.1929
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit16" type="ColorRect" parent="Cascade"]
+[node name="RandomShit16" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 168.96698
 offset_top = 305.5853
@@ -269,7 +316,7 @@ offset_bottom = 361.63235
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit17" type="ColorRect" parent="Cascade"]
+[node name="RandomShit17" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 157.69147
 offset_top = 308.41034
@@ -277,7 +324,7 @@ offset_right = 198.52983
 offset_bottom = 348.2279
 rotation = 2.1233575
 
-[node name="RandomShit18" type="ColorRect" parent="Cascade"]
+[node name="RandomShit18" type="ColorRect" parent="MenuShit/Cascade1"]
 modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
 layout_mode = 0
 offset_left = 133.82344
@@ -287,7 +334,7 @@ offset_bottom = 331.17505
 rotation = 2.154763
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit19" type="ColorRect" parent="Cascade"]
+[node name="RandomShit19" type="ColorRect" parent="MenuShit/Cascade1"]
 modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
 layout_mode = 0
 offset_left = 120.7343
@@ -297,7 +344,7 @@ offset_bottom = 315.6145
 rotation = 2.154763
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit20" type="ColorRect" parent="Cascade"]
+[node name="RandomShit20" type="ColorRect" parent="MenuShit/Cascade1"]
 modulate = Color(0.8776157, 0.8776158, 0.8776157, 1)
 layout_mode = 0
 offset_left = 109.458786
@@ -306,7 +353,7 @@ offset_right = 150.29716
 offset_bottom = 302.21002
 rotation = 2.154763
 
-[node name="RandomShit8" type="ColorRect" parent="Cascade"]
+[node name="RandomShit8" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 137.99998
 offset_top = 160.0
@@ -315,7 +362,7 @@ offset_bottom = 287.77423
 rotation = 2.1233575
 color = Color(0.9882353, 0, 0, 1)
 
-[node name="RandomShit7" type="ColorRect" parent="Cascade"]
+[node name="RandomShit7" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = -82.14131
 offset_top = 63.0
@@ -324,7 +371,7 @@ offset_bottom = 72.282646
 rotation = 1.0095654
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit6" type="ColorRect" parent="Cascade"]
+[node name="RandomShit6" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = -78.99999
 offset_top = 73.0
@@ -333,7 +380,7 @@ offset_bottom = 77.015854
 rotation = 1.0095654
 color = Color(1, 0, 0, 1)
 
-[node name="RandomShit9" type="ColorRect" parent="Cascade"]
+[node name="RandomShit9" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 120.999985
 offset_top = 164.0
@@ -341,7 +388,7 @@ offset_right = 226.97461
 offset_bottom = 267.03296
 rotation = 2.1233575
 
-[node name="RandomShit10" type="ColorRect" parent="Cascade"]
+[node name="RandomShit10" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 104.99997
 offset_top = 169.0
@@ -350,7 +397,8 @@ offset_bottom = 250.04376
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit5" type="ColorRect" parent="Cascade"]
+[node name="RandomShit5" type="ColorRect" parent="MenuShit/Cascade1"]
+z_index = 2
 layout_mode = 0
 offset_left = -58.958614
 offset_top = 187.93752
@@ -359,7 +407,7 @@ offset_bottom = 221.33708
 rotation = -0.23053788
 color = Color(1, 0, 0, 1)
 
-[node name="RandomShit" type="ColorRect" parent="Cascade"]
+[node name="RandomShit" type="ColorRect" parent="MenuShit/Cascade1"]
 z_index = 2
 layout_mode = 0
 offset_left = -54.0
@@ -369,7 +417,7 @@ offset_bottom = 217.1176
 rotation = -0.23053788
 color = Color(0, 0, 0, 1)
 
-[node name="RandomRhombus" type="ColorRect" parent="Cascade/RandomShit"]
+[node name="RandomRhombus" type="ColorRect" parent="MenuShit/Cascade1/RandomShit"]
 material = SubResource("ShaderMaterial_bqqt6")
 layout_mode = 0
 offset_left = 701.21655
@@ -378,7 +426,7 @@ offset_right = 715.6569
 offset_bottom = 27.13942
 rotation = 0.0055080503
 
-[node name="RandomRhombus2" type="ColorRect" parent="Cascade/RandomShit"]
+[node name="RandomRhombus2" type="ColorRect" parent="MenuShit/Cascade1/RandomShit"]
 material = SubResource("ShaderMaterial_bqqt6")
 layout_mode = 0
 offset_left = 769.4003
@@ -387,7 +435,7 @@ offset_right = 783.8407
 offset_bottom = 27.105307
 rotation = 0.0055080503
 
-[node name="RandomRhombus3" type="ColorRect" parent="Cascade/RandomShit"]
+[node name="RandomRhombus3" type="ColorRect" parent="MenuShit/Cascade1/RandomShit"]
 material = SubResource("ShaderMaterial_bqqt6")
 layout_mode = 0
 offset_left = 735.4454
@@ -396,7 +444,7 @@ offset_right = 749.88574
 offset_bottom = 27.298183
 rotation = 0.0055080503
 
-[node name="RandomRhombus4" type="ColorRect" parent="Cascade/RandomShit"]
+[node name="RandomRhombus4" type="ColorRect" parent="MenuShit/Cascade1/RandomShit"]
 material = SubResource("ShaderMaterial_bqqt6")
 layout_mode = 0
 offset_left = 116.17828
@@ -405,7 +453,7 @@ offset_right = 130.61865
 offset_bottom = 27.40281
 rotation = 0.0055080503
 
-[node name="RandomRhombus5" type="ColorRect" parent="Cascade/RandomShit"]
+[node name="RandomRhombus5" type="ColorRect" parent="MenuShit/Cascade1/RandomShit"]
 material = SubResource("ShaderMaterial_bqqt6")
 layout_mode = 0
 offset_left = 76.904205
@@ -414,7 +462,46 @@ offset_right = 91.344574
 offset_bottom = 27.212776
 rotation = 0.0055080503
 
-[node name="RandomShit4" type="ColorRect" parent="Cascade"]
+[node name="RandomShit2" type="ColorRect" parent="MenuShit/Cascade1"]
+z_index = 2
+layout_mode = 0
+offset_left = -54.0
+offset_top = 190.00002
+offset_right = 926.3606
+offset_bottom = 217.1176
+rotation = -0.23053788
+color = Color(0, 0, 0, 1)
+
+[node name="RandomRhombus4" type="ColorRect" parent="MenuShit/Cascade1/RandomShit2"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 116.17828
+offset_top = -0.15448755
+offset_right = 130.61865
+offset_bottom = 27.40281
+rotation = 0.0055080503
+
+[node name="RandomRhombus5" type="ColorRect" parent="MenuShit/Cascade1/RandomShit2"]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 0
+offset_left = 76.904205
+offset_top = -0.1049881
+offset_right = 91.344574
+offset_bottom = 27.212776
+rotation = 0.0055080503
+
+[node name="RandomShit3" type="ColorRect" parent="MenuShit/Cascade1"]
+z_index = 2
+material = SubResource("ShaderMaterial_rtw2f")
+layout_mode = 0
+offset_left = -54.0
+offset_top = 190.00002
+offset_right = 926.3606
+offset_bottom = 217.1176
+rotation = -0.23053788
+color = Color(0, 0, 0, 1)
+
+[node name="HorizontalLineRndmSht" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = -6.418957
 offset_top = -106.00775
@@ -423,71 +510,31 @@ offset_bottom = -82.751114
 rotation = 1.3399616
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit3" type="ColorRect" parent="Cascade"]
+[node name="HorizontalLineRndmSht2" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
-offset_left = -11.082352
-offset_top = -99.9853
-offset_right = 853.74005
-offset_bottom = -88.56382
+anchor_left = -0.009620097
+anchor_top = -0.1542983
+anchor_right = 0.15248434
+anchor_bottom = 1.1489373
+offset_right = 678.0781
+offset_bottom = -833.07526
 rotation = 1.3399616
 color = Color(0.9882353, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="RandomShit36" type="ColorRect" parent="Cascade"]
-modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+[node name="HorizontalLineRndmSht3" type="ColorRect" parent="MenuShit/Cascade1"]
+material = SubResource("ShaderMaterial_wu84c")
 layout_mode = 0
-offset_left = 186.05612
-offset_top = 125.30588
-offset_right = 262.863
-offset_bottom = 200.1929
-rotation = 2.1233575
-color = Color(0, 0, 0, 1)
+anchor_left = -0.009620097
+anchor_top = -0.1542983
+anchor_right = 0.15248434
+anchor_bottom = 1.1489373
+offset_right = 678.0781
+offset_bottom = -833.07526
+rotation = 1.3399616
+metadata/_edit_use_anchors_ = true
 
-[node name="RandomShit37" type="ColorRect" parent="Cascade"]
-modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
-layout_mode = 0
-offset_left = 172.96698
-offset_top = 128.5853
-offset_right = 230.4509
-offset_bottom = 184.63235
-rotation = 2.1233575
-color = Color(1, 0.015686275, 0, 1)
-
-[node name="RandomShit38" type="ColorRect" parent="Cascade"]
-modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
-layout_mode = 0
-offset_left = 161.69147
-offset_top = 131.41034
-offset_right = 202.52983
-offset_bottom = 171.2279
-rotation = 2.1233575
-
-[node name="RandomShit39" type="ColorRect" parent="Cascade"]
-layout_mode = 0
-offset_left = 236.05612
-offset_top = 130.30588
-offset_right = 312.863
-offset_bottom = 205.1929
-rotation = 2.1233575
-color = Color(0, 0, 0, 1)
-
-[node name="RandomShit40" type="ColorRect" parent="Cascade"]
-layout_mode = 0
-offset_left = 222.96698
-offset_top = 133.5853
-offset_right = 280.4509
-offset_bottom = 189.63235
-rotation = 2.1233575
-color = Color(1, 0.015686275, 0, 1)
-
-[node name="RandomShit41" type="ColorRect" parent="Cascade"]
-layout_mode = 0
-offset_left = 211.69147
-offset_top = 136.41034
-offset_right = 252.52983
-offset_bottom = 176.2279
-rotation = 2.1233575
-
-[node name="RandomShit12" type="ColorRect" parent="Cascade"]
+[node name="RandomShit12" type="ColorRect" parent="MenuShit/Cascade1"]
 z_index = 3
 layout_mode = 0
 offset_left = 100.056114
@@ -497,7 +544,7 @@ offset_bottom = 243.1929
 rotation = 2.1233575
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit13" type="ColorRect" parent="Cascade"]
+[node name="RandomShit13" type="ColorRect" parent="MenuShit/Cascade1"]
 z_index = 3
 layout_mode = 0
 offset_left = 86.96697
@@ -507,7 +554,7 @@ offset_bottom = 227.63235
 rotation = 2.1233575
 color = Color(1, 0.015686275, 0, 1)
 
-[node name="RandomShit14" type="ColorRect" parent="Cascade"]
+[node name="RandomShit14" type="ColorRect" parent="MenuShit/Cascade1"]
 z_index = 3
 layout_mode = 0
 offset_left = 75.691475
@@ -516,7 +563,114 @@ offset_right = 116.52984
 offset_bottom = 214.2279
 rotation = 2.1233575
 
-[node name="Title" type="Label" parent="Cascade"]
+[node name="RandomShit36" type="ColorRect" parent="MenuShit/Cascade1"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 186.05612
+offset_top = 125.30588
+offset_right = 262.863
+offset_bottom = 200.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit37" type="ColorRect" parent="MenuShit/Cascade1"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 172.96698
+offset_top = 128.5853
+offset_right = 230.4509
+offset_bottom = 184.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit38" type="ColorRect" parent="MenuShit/Cascade1"]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+layout_mode = 0
+offset_left = 161.69147
+offset_top = 131.41034
+offset_right = 202.52983
+offset_bottom = 171.2279
+rotation = 2.1233575
+
+[node name="RandomShit39" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 236.05612
+offset_top = 130.30588
+offset_right = 312.863
+offset_bottom = 205.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit40" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 222.96698
+offset_top = 133.5853
+offset_right = 280.4509
+offset_bottom = 189.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit51" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 246.05612
+offset_top = 111.30588
+offset_right = 322.863
+offset_bottom = 186.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit52" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 232.96698
+offset_top = 114.5853
+offset_right = 290.4509
+offset_bottom = 170.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit53" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 221.69147
+offset_top = 117.41034
+offset_right = 262.52985
+offset_bottom = 157.2279
+rotation = 2.1233575
+
+[node name="RandomShit41" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 211.69147
+offset_top = 136.41034
+offset_right = 252.52983
+offset_bottom = 176.2279
+rotation = 2.1233575
+
+[node name="RandomShit48" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 195.05612
+offset_top = 92.30588
+offset_right = 271.863
+offset_bottom = 167.1929
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="RandomShit49" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 181.96698
+offset_top = 95.5853
+offset_right = 239.4509
+offset_bottom = 151.63235
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="RandomShit50" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 170.69147
+offset_top = 98.41034
+offset_right = 211.52985
+offset_bottom = 138.2279
+rotation = 2.1233575
+
+[node name="Title" type="Label" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 63.000004
 offset_top = 183.00002
@@ -524,6 +678,397 @@ offset_right = 795.0
 offset_bottom = 256.0
 rotation = -0.23317082
 theme_override_font_sizes/font_size = 60
-text = "Daemon ex Machina"
+text = "Daemon exe Machina"
 label_settings = SubResource("LabelSettings_wu84c")
 metadata/_edit_lock_ = true
+
+[node name="Cascade2" type="Control" parent="MenuShit" node_paths=PackedStringArray("buttons", "shit_under_start", "shit_under_continue", "shit_under_options", "shit_under_credits", "exclude_these_nodes")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_tbmy8")
+buttons = [NodePath("START GAME"), NodePath("CONTINUE"), NodePath("OPTIONS"), NodePath("CREDITS")]
+focus_stagger = 0.08
+shit_under_start = [NodePath("FocusRect"), NodePath("PulsingRectOutline"), NodePath("PulsingRectLayer"), NodePath("PulsingRectLayer2"), NodePath("PulsingRectLayer3"), NodePath("Indicator")]
+shit_under_continue = [NodePath("FocusRect3"), NodePath("PulsingRectOutline3"), NodePath("PulsingRectLayer7"), NodePath("PulsingRectLayer8"), NodePath("PulsingRectLayer9"), NodePath("Indicator4")]
+shit_under_options = [NodePath("FocusRect4"), NodePath("PulsingRectOutline4"), NodePath("PulsingRectLayer10"), NodePath("PulsingRectLayer11"), NodePath("PulsingRectLayer12"), NodePath("Indicator4")]
+shit_under_credits = [NodePath("FocusRect5"), NodePath("PulsingRectOutline5"), NodePath("PulsingRectLayer13"), NodePath("PulsingRectLayer14"), NodePath("PulsingRectLayer15"), NodePath("Indicator5")]
+exclude_these_nodes = [NodePath("FocusRect3"), NodePath("PulsingRectOutline3"), NodePath("PulsingRectLayer7"), NodePath("PulsingRectLayer9"), NodePath("PulsingRectLayer8"), NodePath("Indicator3"), NodePath("FocusRect4"), NodePath("PulsingRectOutline4"), NodePath("PulsingRectLayer10"), NodePath("PulsingRectLayer11"), NodePath("PulsingRectLayer12"), NodePath("Indicator4"), NodePath("FocusRect5"), NodePath("PulsingRectOutline5"), NodePath("PulsingRectLayer13"), NodePath("PulsingRectLayer14"), NodePath("PulsingRectLayer15"), NodePath("Indicator5")]
+cascade_type = 2
+stagger_time = 0.02
+metadata/_custom_type_script = "uid://dw42inhbwtavm"
+metadata/_edit_lock_ = true
+
+[node name="START GAME" type="RichTextLabel" parent="MenuShit/Cascade2"]
+z_index = 2
+layout_mode = 0
+offset_left = -143.0
+offset_top = 310.69666
+offset_right = 997.48584
+offset_bottom = 396.51486
+rotation = -0.23387411
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[shake]START GAME"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FocusRect" type="ColorRect" parent="MenuShit/Cascade2"]
+material = SubResource("ShaderMaterial_tbmy8")
+layout_mode = 0
+offset_left = -43.0
+offset_top = 132.00003
+offset_right = 1228.1812
+offset_bottom = 226.39359
+rotation = -0.23387411
+pivot_offset = Vector2(635.5906, 47.196777)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+
+[node name="ColorRect2" type="ColorRect" parent="MenuShit/Cascade2/FocusRect"]
+layout_mode = 0
+offset_top = 5.69693
+offset_right = 1271.1812
+offset_bottom = 88.696625
+color = Color(0, 0, 0, 1)
+
+[node name="PulsingRectOutline" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0579648
+anchor_top = -0.8182579
+anchor_right = -3.0579648
+anchor_bottom = -0.8182579
+offset_left = 151.8786
+offset_top = 284.7303
+offset_right = 255.64555
+offset_bottom = 385.9035
+rotation = 2.1233575
+pivot_offset = Vector2(51.883476, 50.58661)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+metadata/_edit_use_anchors_ = true
+
+[node name="PulsingRectLayer" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 135.56361
+offset_top = 288.81793
+offset_right = 215.24547
+offset_bottom = 366.50806
+rotation = 2.1233575
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="PulsingRectLayer2" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 123.83209
+offset_top = 291.75723
+offset_right = 186.19524
+offset_bottom = 352.5615
+rotation = 2.1233575
+
+[node name="PulsingRectLayer3" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 111.51776
+offset_top = 294.84253
+offset_right = 155.7017
+offset_bottom = 337.92206
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
+[node name="Indicator" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 100.61898
+offset_top = 297.57318
+offset_right = 128.7135
+offset_bottom = 324.96545
+rotation = 2.1233575
+color = Color(0, 1, 1, 1)
+
+[node name="CONTINUE" type="RichTextLabel" parent="MenuShit/Cascade2"]
+z_index = 2
+layout_mode = 0
+offset_left = -117.0
+offset_top = 411.69666
+offset_right = 1023.48584
+offset_bottom = 497.5149
+rotation = -0.23387411
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "CONTINUE"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FocusRect3" type="ColorRect" parent="MenuShit/Cascade2"]
+material = SubResource("ShaderMaterial_tbmy8")
+layout_mode = 0
+offset_left = -54.000004
+offset_top = 244.0
+offset_right = 1217.1812
+offset_bottom = 338.39355
+rotation = -0.23387411
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(635.5906, 47.196777)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+
+[node name="ColorRect2" type="ColorRect" parent="MenuShit/Cascade2/FocusRect3"]
+layout_mode = 0
+offset_top = 5.69693
+offset_right = 1271.1812
+offset_bottom = 88.696625
+color = Color(0, 0, 0, 1)
+
+[node name="PulsingRectOutline3" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0579648
+anchor_top = -0.8182579
+anchor_right = -3.0579648
+anchor_bottom = -0.8182579
+offset_left = 178.7256
+offset_top = 395.53543
+offset_right = 282.49255
+offset_bottom = 496.70865
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(51.883476, 50.58661)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+metadata/_edit_use_anchors_ = true
+
+[node name="PulsingRectLayer7" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 162.41061
+offset_top = 399.62305
+offset_right = 242.09247
+offset_bottom = 477.31317
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="PulsingRectLayer8" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 150.6791
+offset_top = 402.56238
+offset_right = 213.04224
+offset_bottom = 463.36664
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+
+[node name="PulsingRectLayer9" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 138.36476
+offset_top = 405.64764
+offset_right = 182.5487
+offset_bottom = 448.72717
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 0, 0, 1)
+
+[node name="Indicator3" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 127.46598
+offset_top = 408.3783
+offset_right = 155.5605
+offset_bottom = 435.77057
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 1, 1, 1)
+
+[node name="OPTIONS" type="RichTextLabel" parent="MenuShit/Cascade2"]
+z_index = 2
+layout_mode = 0
+offset_left = -94.0
+offset_top = 506.69666
+offset_right = 1046.4858
+offset_bottom = 592.5149
+rotation = -0.23387411
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "OPTIONS"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FocusRect4" type="ColorRect" parent="MenuShit/Cascade2"]
+material = SubResource("ShaderMaterial_tbmy8")
+layout_mode = 0
+offset_left = -32.0
+offset_top = 339.00003
+offset_right = 1239.1812
+offset_bottom = 433.3936
+rotation = -0.23387411
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(635.5906, 47.196777)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+
+[node name="ColorRect2" type="ColorRect" parent="MenuShit/Cascade2/FocusRect4"]
+layout_mode = 0
+offset_top = 5.69693
+offset_right = 1271.1812
+offset_bottom = 88.696625
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="PulsingRectOutline4" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0579648
+anchor_top = -0.8182579
+anchor_right = -3.0579648
+anchor_bottom = -0.8182579
+offset_left = 197.7256
+offset_top = 484.53546
+offset_right = 301.49255
+offset_bottom = 585.70874
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(51.883476, 50.58661)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+metadata/_edit_use_anchors_ = true
+
+[node name="PulsingRectLayer10" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 181.41061
+offset_top = 488.62308
+offset_right = 261.09247
+offset_bottom = 566.31323
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="PulsingRectLayer11" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 169.6791
+offset_top = 491.5624
+offset_right = 232.04224
+offset_bottom = 552.3667
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+
+[node name="PulsingRectLayer12" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 157.36476
+offset_top = 494.64767
+offset_right = 201.5487
+offset_bottom = 537.7272
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 0, 0, 1)
+
+[node name="Indicator4" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 146.46597
+offset_top = 497.37833
+offset_right = 174.56049
+offset_bottom = 524.7706
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 1, 1, 1)
+
+[node name="CREDITS" type="RichTextLabel" parent="MenuShit/Cascade2"]
+z_index = 2
+layout_mode = 0
+offset_left = -71.0
+offset_top = 604.69666
+offset_right = 1069.4858
+offset_bottom = 690.5149
+rotation = -0.23387411
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "CREDITS"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FocusRect5" type="ColorRect" parent="MenuShit/Cascade2"]
+material = SubResource("ShaderMaterial_tbmy8")
+layout_mode = 0
+offset_left = -33.00001
+offset_top = 442.0
+offset_right = 1238.1812
+offset_bottom = 536.39355
+rotation = -0.23387411
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(635.5906, 47.196777)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+
+[node name="ColorRect2" type="ColorRect" parent="MenuShit/Cascade2/FocusRect5"]
+layout_mode = 0
+offset_top = 5.69693
+offset_right = 1271.1812
+offset_bottom = 88.696625
+color = Color(0, 0, 0, 1)
+
+[node name="PulsingRectOutline5" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0579648
+anchor_top = -0.8182579
+anchor_right = -3.0579648
+anchor_bottom = -0.8182579
+offset_left = 215.7256
+offset_top = 577.5355
+offset_right = 319.49255
+offset_bottom = 678.70874
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(51.883476, 50.58661)
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_rtw2f")
+metadata/_edit_use_anchors_ = true
+
+[node name="PulsingRectLayer13" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 199.41061
+offset_top = 581.62305
+offset_right = 279.09247
+offset_bottom = 659.3132
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(1, 0.015686275, 0, 1)
+
+[node name="PulsingRectLayer14" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 187.6791
+offset_top = 584.5624
+offset_right = 250.04224
+offset_bottom = 645.36664
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+
+[node name="PulsingRectLayer15" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 175.36476
+offset_top = 587.6477
+offset_right = 219.5487
+offset_bottom = 630.72723
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 0, 0, 1)
+
+[node name="Indicator5" type="ColorRect" parent="MenuShit/Cascade2"]
+layout_mode = 0
+offset_left = 164.46597
+offset_top = 590.3783
+offset_right = 192.56049
+offset_bottom = 617.77057
+rotation = 2.1233575
+scale = Vector2(1e-05, 1e-05)
+color = Color(0, 1, 1, 1)

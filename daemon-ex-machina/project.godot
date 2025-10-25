@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Bus="*res://core/auto/bus.gd"
 Gamestate="*res://core/auto/gamestate.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom_font="uid://b57nfwrcgavkq"

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b7i6cnsqmrk61"]
+
+[node name="StartButtonRandomShit6" type="ColorRect"]
+anchors_preset = -1
+anchor_left = -3.0579648
+anchor_top = -0.8182579
+anchor_right = -3.0579648
+anchor_bottom = -0.8182579
+offset_left = 162.31856
+offset_top = 338.7303
+offset_right = 266.0855
+offset_bottom = 439.9035
+rotation = 2.1233575
+pivot_offset = Vector2(51.883476, 50.58661)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

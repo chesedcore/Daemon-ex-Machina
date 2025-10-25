@@ -10,6 +10,9 @@ class_name Cascade extends Control
 ##for tweening and not [code]global_position[/code].
 @export var use_these_nodes_instead: Array[Node]
 
+##does what it says on the tin. these nodes will no longer be part of the animations.
+@export var exclude_these_nodes: Array[Node]
+
 ##what animation type to deploy for this cascade.
 @export var cascade_type: CASCADE_TYPE
 
@@ -38,9 +41,19 @@ class_name Cascade extends Control
 #@export var tween_alpha: bool ----> ##UNIMPLEMENTED
 ##endregion
 
-signal cascade_started
-signal cascade_finished
-signal last_cascade_started
+enum FADE {
+	
+	##elements fly into the screen.
+	FADE_IN,
+	
+	##elements fly out of the screen.
+	FADE_OUT,
+	
+}
+
+signal cascade_started(fade: FADE)
+signal cascade_finished(fade: FADE)
+signal last_cascade_started(fade: FADE)
 
 ##the dictionary that holds every node while corresponding it to its original
 ##position. intended to act as this tool's single source of truth.
@@ -87,7 +100,7 @@ func prepare_positions_arr() -> void:
 
 func _prepare_children() -> void:
 	for node in get_children():
-		if node is Marker2D: continue
+		if node is Marker2D or node is Timer: continue
 		_original_positions[node] = node.position
 
 func _prepare_targets_instead() -> void:
@@ -96,9 +109,12 @@ func _prepare_targets_instead() -> void:
 
 ##a function that gets all the units that are supposed to take part in animation.
 ##uses [code]_original_positions[/code] as the basis of its truth, so it can be 
-##reliably used immediately after a state change too.
+##reliably used immediately after a state change too. applies the exclusion filter
+##marked in [code]exclude_these_nodes[/code].
 func get_units() -> Array[Node]:
-	return _original_positions.keys()
+	var units := _original_positions.keys()
+	for target in exclude_these_nodes: units.erase(target)
+	return units
 
 ##does what it says on the damned tin. requires a [code]start_marker[/code]
 ##to operate. obviously. uses the marker's [code]position[/code] instead of
@@ -136,11 +152,14 @@ func _cascade_engine(
 	reverse: bool = false
 ) -> void:
 	
-	cascade_started.emit()
+	var fade_status := FADE.FADE_IN
+	if reverse: fade_status = FADE.FADE_OUT
+	
+	cascade_started.emit(fade_status)
 	var units: Array[Node] = filter.call(get_units())
 	if not units:
-		last_cascade_started.emit()
-		cascade_finished.emit()
+		last_cascade_started.emit(fade_status)
+		cascade_finished.emit(fade_status)
 		return
 	
 	if tween: tween.kill()
@@ -153,8 +172,8 @@ func _cascade_engine(
 			modifier.call(tween, unit, cumulative_delay, reverse)
 		cumulative_delay += stagger_time
 	
-	tween.finished.connect(cascade_finished.emit)
-	tween.tween_callback(last_cascade_started.emit)\
+	tween.finished.connect(cascade_finished.emit.bind(fade_status))
+	tween.tween_callback(last_cascade_started.emit.bind(fade_status))\
 	.set_delay(maxf(cumulative_delay - stagger_time, 0.0))
 
 #endregion
@@ -246,7 +265,7 @@ func _cascade_in_hitzone() -> void:
 	_cascade_engine(filter_hitzone, [mod_hitzone_in])
 
 func _cascade_out_hitzone() -> void:
-	_cascade_engine(filter_nothing, [mod_hitzone_out])
+	_cascade_engine(filter_nothing, [mod_hitzone_out], true)
 
 func _cascade_in_sine_hitzone() -> void:
 	_cascade_engine(filter_sine_hitzone, [mod_hitzone_in])
