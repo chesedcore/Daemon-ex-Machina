@@ -75,6 +75,7 @@ menu = NodePath("MenuShit")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
 material = SubResource("ShaderMaterial_8ln24")
 layout_mode = 1
 anchors_preset = 15
@@ -84,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="MenuShit" type="Control" parent="." node_paths=PackedStringArray("cascade_one", "cascade_two")]
+[node name="MenuShit" type="Control" parent="." node_paths=PackedStringArray("cascade_one", "cascade_two", "extras_dock")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +95,7 @@ grow_vertical = 2
 script = ExtResource("3_8ln24")
 cascade_one = NodePath("Cascade1")
 cascade_two = NodePath("Cascade2")
+extras_dock = NodePath("Extra")
 metadata/_edit_lock_ = true
 
 [node name="Cascade1" type="Control" parent="MenuShit"]
@@ -109,15 +111,6 @@ begin_on_ready = true
 stagger_time = 0.02
 metadata/_custom_type_script = "uid://dw42inhbwtavm"
 metadata/_edit_lock_ = true
-
-[node name="RandomShit11" type="ColorRect" parent="MenuShit/Cascade1"]
-layout_mode = 0
-offset_left = 152.45581
-offset_top = 156.7476
-offset_right = 303.797
-offset_bottom = 305.7168
-rotation = 2.1233575
-color = Color(0, 0, 0, 1)
 
 [node name="RandomShit21" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
@@ -356,6 +349,15 @@ offset_right = 150.29716
 offset_bottom = 302.21002
 rotation = 2.154763
 
+[node name="RandomShit11" type="ColorRect" parent="MenuShit/Cascade1"]
+layout_mode = 0
+offset_left = 152.45581
+offset_top = 156.7476
+offset_right = 303.797
+offset_bottom = 305.7168
+rotation = 2.1233575
+color = Color(0, 0, 0, 1)
+
 [node name="RandomShit8" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = 137.99998
@@ -365,7 +367,7 @@ offset_bottom = 287.77423
 rotation = 2.1233575
 color = Color(0.9882353, 0, 0, 1)
 
-[node name="RandomShit7" type="ColorRect" parent="MenuShit/Cascade1"]
+[node name="RandomBackline" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = -82.14131
 offset_top = 63.0
@@ -374,7 +376,7 @@ offset_bottom = 72.282646
 rotation = 1.0095654
 color = Color(0, 0, 0, 1)
 
-[node name="RandomShit6" type="ColorRect" parent="MenuShit/Cascade1"]
+[node name="RandomBackline2" type="ColorRect" parent="MenuShit/Cascade1"]
 layout_mode = 0
 offset_left = -78.99999
 offset_top = 73.0
@@ -735,6 +737,7 @@ offset_right = 1228.1812
 offset_bottom = 226.39359
 rotation = -0.23387411
 pivot_offset = Vector2(635.5906, 47.196777)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 
@@ -758,6 +761,7 @@ offset_right = 255.64555
 offset_bottom = 385.9035
 rotation = 2.1233575
 pivot_offset = Vector2(51.883476, 50.58661)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 metadata/_edit_use_anchors_ = true
@@ -769,6 +773,7 @@ offset_top = 288.81793
 offset_right = 215.24547
 offset_bottom = 366.50806
 rotation = 2.1233575
+mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
 [node name="PulsingRectLayer2" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -778,6 +783,7 @@ offset_top = 291.75723
 offset_right = 186.19524
 offset_bottom = 352.5615
 rotation = 2.1233575
+mouse_filter = 2
 
 [node name="PulsingRectLayer3" type="ColorRect" parent="MenuShit/Cascade2"]
 layout_mode = 0
@@ -786,6 +792,7 @@ offset_top = 294.84253
 offset_right = 155.7017
 offset_bottom = 337.92206
 rotation = 2.1233575
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Indicator" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -795,6 +802,7 @@ offset_top = 297.57318
 offset_right = 128.7135
 offset_bottom = 324.96545
 rotation = 2.1233575
+mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
 [node name="CONTINUE" type="RichTextLabel" parent="MenuShit/Cascade2"]
@@ -826,6 +834,7 @@ offset_bottom = 338.39355
 rotation = -0.23387411
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 
@@ -850,6 +859,7 @@ offset_bottom = 496.70865
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 metadata/_edit_use_anchors_ = true
@@ -862,6 +872,7 @@ offset_right = 242.09247
 offset_bottom = 477.31317
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
 [node name="PulsingRectLayer8" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -872,6 +883,7 @@ offset_right = 213.04224
 offset_bottom = 463.36664
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 
 [node name="PulsingRectLayer9" type="ColorRect" parent="MenuShit/Cascade2"]
 layout_mode = 0
@@ -881,6 +893,7 @@ offset_right = 182.5487
 offset_bottom = 448.72717
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Indicator3" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -891,6 +904,7 @@ offset_right = 155.5605
 offset_bottom = 435.77057
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
 [node name="OPTIONS" type="RichTextLabel" parent="MenuShit/Cascade2"]
@@ -922,6 +936,7 @@ offset_bottom = 433.3936
 rotation = -0.23387411
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 
@@ -947,6 +962,7 @@ offset_bottom = 585.70874
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 metadata/_edit_use_anchors_ = true
@@ -959,6 +975,7 @@ offset_right = 261.09247
 offset_bottom = 566.31323
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
 [node name="PulsingRectLayer11" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -969,6 +986,7 @@ offset_right = 232.04224
 offset_bottom = 552.3667
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 
 [node name="PulsingRectLayer12" type="ColorRect" parent="MenuShit/Cascade2"]
 layout_mode = 0
@@ -978,6 +996,7 @@ offset_right = 201.5487
 offset_bottom = 537.7272
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Indicator4" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -988,6 +1007,7 @@ offset_right = 174.56049
 offset_bottom = 524.7706
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
 [node name="CREDITS" type="RichTextLabel" parent="MenuShit/Cascade2"]
@@ -1018,6 +1038,7 @@ offset_bottom = 536.39355
 rotation = -0.23387411
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 
@@ -1026,6 +1047,7 @@ layout_mode = 0
 offset_top = 5.69693
 offset_right = 1271.1812
 offset_bottom = 88.696625
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PulsingRectOutline5" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -1042,6 +1064,7 @@ offset_bottom = 678.70874
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
 metadata/_edit_use_anchors_ = true
@@ -1054,6 +1077,7 @@ offset_right = 279.09247
 offset_bottom = 659.3132
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
 [node name="PulsingRectLayer14" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -1064,6 +1088,7 @@ offset_right = 250.04224
 offset_bottom = 645.36664
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 
 [node name="PulsingRectLayer15" type="ColorRect" parent="MenuShit/Cascade2"]
 layout_mode = 0
@@ -1073,6 +1098,7 @@ offset_right = 219.5487
 offset_bottom = 630.72723
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Indicator5" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -1083,4 +1109,11 @@ offset_right = 192.56049
 offset_bottom = 617.77057
 rotation = 2.1233575
 scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
 color = Color(0, 1, 1, 1)
+
+[node name="Extra" type="Control" parent="MenuShit"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2

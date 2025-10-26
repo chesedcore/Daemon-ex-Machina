@@ -1,5 +1,7 @@
 class_name FuckMyChungusLifeButton extends RichTextLabel
 
+signal clicked
+
 func shake() -> void:
 	self.text = "[shake]"+self.name
 
@@ -26,3 +28,9 @@ func integrate_in(owned_shit: Array[Control], tween_time: float, stagger_time: f
 	for shit in owned_shit:
 		tween.tween_property(shit, "scale", Vector2(1,1), tween_time).set_delay(cum_delay)
 		cum_delay += stagger_time
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				clicked.emit()

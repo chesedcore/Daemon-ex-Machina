@@ -41,6 +41,7 @@ func get_button_shit_map(button: RichTextLabel) -> Array[Control]:
 func wire_up_signals() -> void:
 	for button in buttons:
 		button.mouse_entered.connect(refocus_at.bind(button))
+	credits_button.clicked.connect(Bus.move_to_credits.emit)
 
 func refocus_at(button: FuckMyChungusLifeButton) -> void:
 	
@@ -60,6 +61,7 @@ func refocus_at(button: FuckMyChungusLifeButton) -> void:
 	button.integrate_in(new_mapped_shit, tween_in_time, stagger_time)
 
 func cascade_out(ignore_exclusions: bool = false) -> void:
+	#preserve state
 	var shit_related_to_current_button := get_button_shit_map(focused_button)
 	exclude_these_nodes = get_shit()
 	for shit in shit_related_to_current_button:
