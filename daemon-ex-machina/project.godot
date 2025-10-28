@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="DaemonExMachina"
+config/name="DaemonExeMachina"
 run/main_scene="uid://jp133k8cknyo"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
@@ -26,7 +26,10 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [gui]
 

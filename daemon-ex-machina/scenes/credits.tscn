@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ptx6gcma2txl"]
 
-[ext_resource type="Script" uid="uid://dw42inhbwtavm" path="res://scripts/ui/Cascade.gd" id="1_0ctdu"]
-[ext_resource type="Script" uid="uid://br0xx77dawlqd" path="res://scripts/credits.gd" id="1_2fbfq"]
-[ext_resource type="Shader" uid="uid://dk6sf2o0dbx35" path="res://shadercode/stripes.gdshader" id="2_2fbfq"]
-[ext_resource type="Script" uid="uid://dx06tggmku35n" path="res://scripts/ui/centering_rect.gd" id="3_8gwij"]
+[ext_resource type="Script" uid="uid://ckfx8uiweu0dd" path="res://scripts/ui/Cascade.gd" id="1_0ctdu"]
+[ext_resource type="Script" uid="uid://bjfucergv1qa4" path="res://scripts/credits.gd" id="1_2fbfq"]
+[ext_resource type="Shader" uid="uid://b21me1t633457" path="res://shadercode/stripes.gdshader" id="2_2fbfq"]
+[ext_resource type="Script" uid="uid://do65t0j0hfsib" path="res://scripts/ui/centering_rect.gd" id="3_8gwij"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu84c"]
 resource_local_to_scene = true
@@ -51,7 +51,6 @@ cascade_type = 2
 begin_on_ready = true
 tween_in_time = 0.3
 stagger_time = 0.01
-metadata/_custom_type_script = "uid://dw42inhbwtavm"
 metadata/_edit_lock_ = true
 
 [node name="RandomShit54" type="ColorRect" parent="Cascade"]
@@ -459,29 +458,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="HorizontalLineRndmSht5" type="ColorRect" parent="Cascade"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.009620097
-anchor_top = -0.1542983
-anchor_right = 0.15248434
-anchor_bottom = 1.1489373
-offset_right = 678.0781
-offset_bottom = -833.07526
+offset_left = 9.812742
+offset_top = -28.252842
+offset_right = 773.0514
+offset_bottom = -18.016363
 rotation = 1.2980464
 color = Color(0.9882353, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="HorizontalLineRndmSht6" type="ColorRect" parent="Cascade"]
 material = SubResource("ShaderMaterial_wu84c")
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.009620097
-anchor_top = -0.1542983
-anchor_right = 0.15248434
-anchor_bottom = 1.1489373
-offset_right = 678.0781
-offset_bottom = -833.07526
+offset_left = 16.786255
+offset_top = -4.6954684
+offset_right = 694.8644
+offset_bottom = 6.442513
 rotation = 1.2980464
-metadata/_edit_use_anchors_ = true
 
 [node name="RandomShit84" type="ColorRect" parent="Cascade"]
 layout_mode = 0
@@ -679,33 +670,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="HorizontalLineRndmSht8" type="ColorRect" parent="Cascade"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.009620097
-anchor_top = -0.1542983
-anchor_right = 0.15248434
-anchor_bottom = 1.1489373
-offset_left = 1056.073
-offset_top = -13.50177
-offset_right = 1734.1511
-offset_bottom = -846.577
+offset_left = 1038.374
+offset_top = -86.20726
+offset_right = 1859.6147
+offset_bottom = -72.81804
 rotation = 1.7651002
 color = Color(0.9882353, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="HorizontalLineRndmSht9" type="ColorRect" parent="Cascade"]
 material = SubResource("ShaderMaterial_wu84c")
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.009620097
-anchor_top = -0.1542983
-anchor_right = 0.15248434
-anchor_bottom = 1.1489373
-offset_left = 1056.073
-offset_top = -13.50177
-offset_right = 1734.1511
-offset_bottom = -846.577
+offset_left = 1047.0
+offset_top = -129.0
+offset_right = 1911.8225
+offset_bottom = -114.87024
 rotation = 1.7651002
-metadata/_edit_use_anchors_ = true
 
 [node name="RandomShit102" type="ColorRect" parent="Cascade"]
 layout_mode = 0
