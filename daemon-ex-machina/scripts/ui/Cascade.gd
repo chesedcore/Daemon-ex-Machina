@@ -2,7 +2,6 @@
 ##in and out of view.
 class_name Cascade extends Control
 
-
 ##if this array has [i]any[/i] nodes in it, then instead of this node's direct
 ##children, those nodes are tweened instead. if using a marker2d to denote node
 ##starting position, make sure that marker2d has the same parent as those nodes.

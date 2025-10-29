@@ -6,12 +6,15 @@
 
 [node name="GameNode" type="Node2D" node_paths=PackedStringArray("cascade", "outline_rect", "faction_rect", "function_rect")]
 script = ExtResource("1_2smd5")
-cascade = NodePath("Cascade")
-outline_rect = NodePath("OutlineRect")
-faction_rect = NodePath("Cascade/FactionRect")
-function_rect = NodePath("Cascade/FunctionRect")
+cascade = NodePath("ScaleNode/Cascade")
+outline_rect = NodePath("ScaleNode/OutlineRect")
+faction_rect = NodePath("ScaleNode/Cascade/FactionRect")
+function_rect = NodePath("ScaleNode/Cascade/FunctionRect")
 
-[node name="OutlineRect" type="ColorRect" parent="."]
+[node name="ScaleNode" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="OutlineRect" type="ColorRect" parent="ScaleNode"]
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -21,17 +24,17 @@ pivot_offset = Vector2(20, 20)
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_n8tad")
 
-[node name="Cascade" type="Control" parent="."]
+[node name="Cascade" type="Control" parent="ScaleNode"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5ue4h")
 cascade_type = 2
-begin_on_ready = true
 tween_in_time = 0.9
 stagger_time = 0.2
 metadata/_edit_use_anchors_ = true
 
-[node name="FactionRect" type="ColorRect" parent="Cascade"]
+[node name="FactionRect" type="ColorRect" parent="ScaleNode/Cascade"]
 layout_mode = 0
 offset_left = -15.0
 offset_top = -15.0
@@ -42,7 +45,7 @@ pivot_offset = Vector2(15, 15)
 color = Color(1, 0, 0, 1)
 script = ExtResource("1_n8tad")
 
-[node name="FunctionRect" type="ColorRect" parent="Cascade"]
+[node name="FunctionRect" type="ColorRect" parent="ScaleNode/Cascade"]
 layout_mode = 0
 offset_left = -10.0
 offset_top = -10.0

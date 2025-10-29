@@ -68,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0098257)
 script = ExtResource("1_bqqt6")
 cascade_one = NodePath("MenuShit/Cascade1")
 cascade_two = NodePath("MenuShit/Cascade2")
@@ -108,7 +109,8 @@ begin_on_ready = true
 stagger_time = 0.02
 
 [node name="RandomShit21" type="ColorRect" parent="MenuShit/Cascade1"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_left = 217.05612
 offset_top = 600.3059
 offset_right = 293.863
@@ -502,7 +504,7 @@ rotation = -0.23053788
 color = Color(0, 0, 0, 1)
 
 [node name="HorizontalLineRndmSht" type="ColorRect" parent="MenuShit/Cascade1"]
-layout_mode = 0
+layout_mode = 1
 offset_left = -6.418957
 offset_top = -106.00775
 offset_right = 867.995
@@ -511,7 +513,7 @@ rotation = 1.3399616
 color = Color(0, 0, 0, 1)
 
 [node name="HorizontalLineRndmSht2" type="ColorRect" parent="MenuShit/Cascade1"]
-layout_mode = 1
+layout_mode = 0
 offset_left = -1.8999821
 offset_top = -48.561287
 offset_right = 801.16125
@@ -521,7 +523,7 @@ color = Color(0.9882353, 0, 0, 1)
 
 [node name="HorizontalLineRndmSht3" type="ColorRect" parent="MenuShit/Cascade1"]
 material = SubResource("ShaderMaterial_wu84c")
-layout_mode = 1
+layout_mode = 0
 offset_left = -7.4973035
 offset_top = -63.21779
 offset_right = 799.6072
@@ -718,21 +720,28 @@ metadata/_edit_lock_ = true
 
 [node name="FocusRect" type="ColorRect" parent="MenuShit/Cascade2"]
 material = SubResource("ShaderMaterial_tbmy8")
-layout_mode = 0
-offset_left = -43.0
-offset_top = 132.00003
-offset_right = 1228.1812
-offset_bottom = 226.39359
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.91585845
+anchor_top = 1.3172916
+anchor_right = 33.18148
+anchor_bottom = 1.3172916
+offset_left = -6.3656616
+offset_top = 79.308365
+offset_right = 9.31665
+offset_bottom = 173.70192
 rotation = -0.23387411
+scale = Vector2(1, 1.0098257)
 pivot_offset = Vector2(635.5906, 47.196777)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("6_rtw2f")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="MenuShit/Cascade2/FocusRect"]
 layout_mode = 0
 offset_top = 5.69693
-offset_right = 1271.1812
+offset_right = 1382.1654
 offset_bottom = 88.696625
 color = Color(0, 0, 0, 1)
 
@@ -748,6 +757,7 @@ offset_top = 284.7303
 offset_right = 255.64555
 offset_bottom = 385.9035
 rotation = 2.1233575
+scale = Vector2(1, 1.0098257)
 pivot_offset = Vector2(51.883476, 50.58661)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -761,6 +771,7 @@ offset_top = 288.81793
 offset_right = 215.24547
 offset_bottom = 366.50806
 rotation = 2.1233575
+scale = Vector2(1, 1.0098257)
 mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
@@ -771,6 +782,7 @@ offset_top = 291.75723
 offset_right = 186.19524
 offset_bottom = 352.5615
 rotation = 2.1233575
+scale = Vector2(1, 1.0098257)
 mouse_filter = 2
 
 [node name="PulsingRectLayer3" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -780,6 +792,7 @@ offset_top = 294.84253
 offset_right = 155.7017
 offset_bottom = 337.92206
 rotation = 2.1233575
+scale = Vector2(1, 1.0098257)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -790,6 +803,7 @@ offset_top = 297.57318
 offset_right = 128.7135
 offset_bottom = 324.96545
 rotation = 2.1233575
+scale = Vector2(1, 1.0098257)
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
@@ -820,7 +834,7 @@ offset_top = 244.0
 offset_right = 1217.1812
 offset_bottom = 338.39355
 rotation = -0.23387411
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -845,7 +859,7 @@ offset_top = 395.53543
 offset_right = 282.49255
 offset_bottom = 496.70865
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -859,7 +873,7 @@ offset_top = 399.62305
 offset_right = 242.09247
 offset_bottom = 477.31317
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
@@ -870,7 +884,7 @@ offset_top = 402.56238
 offset_right = 213.04224
 offset_bottom = 463.36664
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 
 [node name="PulsingRectLayer9" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -880,7 +894,7 @@ offset_top = 405.64764
 offset_right = 182.5487
 offset_bottom = 448.72717
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -891,7 +905,7 @@ offset_top = 408.3783
 offset_right = 155.5605
 offset_bottom = 435.77057
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
@@ -922,7 +936,7 @@ offset_top = 339.00003
 offset_right = 1239.1812
 offset_bottom = 433.3936
 rotation = -0.23387411
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -948,7 +962,7 @@ offset_top = 484.53546
 offset_right = 301.49255
 offset_bottom = 585.70874
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -962,7 +976,7 @@ offset_top = 488.62308
 offset_right = 261.09247
 offset_bottom = 566.31323
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
@@ -973,7 +987,7 @@ offset_top = 491.5624
 offset_right = 232.04224
 offset_bottom = 552.3667
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 
 [node name="PulsingRectLayer12" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -983,7 +997,7 @@ offset_top = 494.64767
 offset_right = 201.5487
 offset_bottom = 537.7272
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -994,7 +1008,7 @@ offset_top = 497.37833
 offset_right = 174.56049
 offset_bottom = 524.7706
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
@@ -1006,6 +1020,7 @@ offset_top = 604.69666
 offset_right = 1069.4858
 offset_bottom = 690.5149
 rotation = -0.23387411
+scale = Vector2(1, 1.0098257)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
@@ -1024,7 +1039,7 @@ offset_top = 442.0
 offset_right = 1238.1812
 offset_bottom = 536.39355
 rotation = -0.23387411
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(635.5906, 47.196777)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -1050,7 +1065,7 @@ offset_top = 577.5355
 offset_right = 319.49255
 offset_bottom = 678.70874
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 pivot_offset = Vector2(51.883476, 50.58661)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -1064,7 +1079,7 @@ offset_top = 581.62305
 offset_right = 279.09247
 offset_bottom = 659.3132
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(1, 0.015686275, 0, 1)
 
@@ -1075,7 +1090,7 @@ offset_top = 584.5624
 offset_right = 250.04224
 offset_bottom = 645.36664
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 
 [node name="PulsingRectLayer15" type="ColorRect" parent="MenuShit/Cascade2"]
@@ -1085,7 +1100,7 @@ offset_top = 587.6477
 offset_right = 219.5487
 offset_bottom = 630.72723
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -1096,7 +1111,7 @@ offset_top = 590.3783
 offset_right = 192.56049
 offset_bottom = 617.77057
 rotation = 2.1233575
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(1e-05, 1.0098257e-05)
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
