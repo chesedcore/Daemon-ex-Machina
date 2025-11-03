@@ -3,7 +3,7 @@ class_name TileHandler extends Node2D
 @export var node_layer: TileMapLayer
 @export var reserved_layer: TileMapLayer
 @export var game_nodes: Node2D
-@export var node_preload: PackedScene
+@export var node_preload: PackedScene = preload("res://scenes/GameNode.tscn")
 @export var player: Marker2D
 
 
@@ -28,7 +28,6 @@ func detect_movement() -> void:
 	if dir == Vector2i.ZERO: return
 	
 	player_visual_position += dir
-	
 
 func get_pos_from(tile: Vector2i) -> Vector2:
 	return node_layer.map_to_local(tile)
